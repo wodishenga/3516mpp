@@ -1,0 +1,16 @@
+# Hisilicon Hi35xx sample Makefile
+
+include ../Makefile.param
+
+CFLAGS += `pkg-config --cflags  --libs opencv`
+CC = arm-himix200-linux-g++
+#CC = arm-himix200-linux-gcc
+
+SMP_SRCS := $(wildcard *.c)
+TARGET := $(SMP_SRCS:%.c=%)
+
+
+
+TARGET_PATH := $(PWD)
+# compile linux or HuaweiLite
+include $(PWD)/../$(ARM_ARCH)_$(OSTYPE).mak
